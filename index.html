@@ -69,8 +69,8 @@ header{position:sticky;top:0;z-index:40;background:var(--black);border-bottom:1p
 .nav .btn{padding:.7rem 1.2rem;font-size:.82rem}
 
 /* HERO */
-.hero{position:relative;overflow:hidden;padding:4.5rem 0 5rem}
-.hero:before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 55% at 78% 40%,rgba(92,250,10,.16),transparent 70%);pointer-events:none}
+.hero{position:relative;overflow:hidden;padding:4.5rem 0 5rem;background:linear-gradient(90deg,rgba(11,11,11,.95) 0%,rgba(11,11,11,.72) 40%,rgba(11,11,11,.2) 100%),linear-gradient(0deg,var(--black) 0%,transparent 30%),url(assets/hero-interior.jpg) center/cover no-repeat}
+.hero:before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 45% 50% at 15% 30%,rgba(92,250,10,.1),transparent 70%);pointer-events:none}
 .hero:after{content:'';position:absolute;left:-10%;right:-10%;bottom:70px;height:3px;background:linear-gradient(90deg,transparent,var(--lime),transparent);opacity:.35;transform:rotate(-3deg)}
 .hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.1fr .9fr;gap:3rem;align-items:center}
 .hero-logo{width:min(320px,80%);height:auto;margin-bottom:1.6rem}
@@ -257,7 +257,7 @@ footer{border-top:1px solid rgba(255,255,255,.08);padding:1.6rem 0 2rem}
   .wrap{padding:0 16px}
   .nav{height:64px}
   .brand img{height:48px}
-  .hero{padding:3rem 0 4rem}
+  .hero{padding:3rem 0 4rem;background:linear-gradient(180deg,rgba(11,11,11,.55) 0%,rgba(11,11,11,.88) 32%,var(--black) 55%),url(assets/hero-interior.jpg) 30% top/auto 62% no-repeat,var(--black)}
   .hero-stats{gap:1.4rem}
   .hs b{font-size:1.7rem}
   .toolbar{position:static;margin:1.2rem 0 1rem}
@@ -295,7 +295,7 @@ footer{border-top:1px solid rgba(255,255,255,.08);padding:1.6rem 0 2rem}
 <section class="hero" id="top">
  <div class="wrap hero-grid">
   <div>
-   <img class="hero-logo rv" src="assets/bambam-logo.jpg" alt="Bambam Car Rental" width="850" height="495">
+   <img class="hero-logo rv" src="assets/bambam-logo.png" alt="Bambam Car Rental" width="850" height="495">
    <div class="eyebrow rv">Sewa Kereta · Kadar 24 Jam</div>
    <h1 class="rv">Pilih kereta.<br><em>Terus jalan.</em></h1>
    <p class="rv">Kereta pilihan untuk urusan harian, perjalanan keluarga dan trip istimewa. Dari Axia hingga Vellfire — tempah terus melalui WhatsApp.</p>
@@ -436,7 +436,7 @@ Anggaran: RM340<span class="wb-time">baru sahaja ✓✓</span></div>
 <!-- CTA -->
 <section class="cta-final">
  <div class="wrap">
-  <img class="cta-logo rv" src="assets/bambam-logo.jpg" alt="Bambam Car Rental" loading="lazy">
+  <img class="cta-logo rv" src="assets/bambam-logo.png" alt="Bambam Car Rental" loading="lazy">
   <h2 class="rv">Sudah pilih kereta?<br><em>Jom gerak.</em></h2>
   <p class="rv">Beritahu kami model dan tarikh yang anda perlukan.</p>
   <button class="btn btn-lime rv" type="button" data-book>Tempah Sekarang ↗</button>
@@ -495,7 +495,7 @@ Anggaran: RM340<span class="wb-time">baru sahaja ✓✓</span></div>
 
 <script>
 // Masukkan nombor WhatsApp Bambam dalam format kod negara tanpa tanda +. Contoh: 60123456789
-const WHATSAPP_NUMBER = "";
+const WHATSAPP_NUMBER = "60196043737";
 
 const cars=[
 {name:'Axia New Model',detail:'2023 / 2024 / 2025',cat:'Kompak',price:140,img:'https://b2c-cdn.carsome.my/cdn-cgi/image/format%3Dauto%2Cquality%3D50%2Cwidth%3D1296/B2C/b8767671-53dc-47ac-bc2a-d69624327b88.JPG'},
