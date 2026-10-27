@@ -225,6 +225,9 @@ footer{border-top:1px solid rgba(255,255,255,.08);padding:1.6rem 0 2rem}
 .dialog input,.dialog select{width:100%;padding:.8rem .9rem;border:1px solid #2C2C2C;border-radius:10px;outline:none;background:#0B0B0B;font-size:.95rem;color-scheme:dark}
 .dialog input:focus,.dialog select:focus{border-color:var(--lime)}
 .two{display:grid;grid-template-columns:1fr 1fr;gap:.7rem}
+.fgroup{margin-top:1.1rem;padding-top:.3rem;border-top:1px solid #262626}
+.fgroup-title{font:italic 800 .95rem 'Saira',sans-serif;color:var(--lime);text-transform:uppercase;margin-top:.7rem}
+.dialog input:invalid:not(:placeholder-shown){border-color:#5a2a2a}
 .estimate{margin-top:1rem;background:#0B0B0B;border:1px dashed #333;border-radius:12px;padding:.85rem 1rem;display:flex;justify-content:space-between;align-items:center;gap:1rem}
 .estimate span{font-size:.82rem;color:#9EA39A}
 .estimate b{font:italic 800 1.5rem 'Saira',sans-serif;color:var(--lime);white-space:nowrap}
@@ -274,7 +277,7 @@ footer{border-top:1px solid rgba(255,255,255,.08);padding:1.6rem 0 2rem}
   .grid{grid-template-columns:1fr;gap:16px}
   .car-photo{aspect-ratio:16/11}
   .why-cards,.step-grid{grid-template-columns:1fr}
-  .two{grid-template-columns:1fr}
+  .two{gap:.5rem}
   .lb-nav{top:auto;bottom:24px;transform:none}
   .wa-float{width:54px;height:54px;right:14px;bottom:14px}
   .music-toggle{width:46px;height:46px;left:14px;bottom:18px}
@@ -388,7 +391,7 @@ footer{border-top:1px solid rgba(255,255,255,.08);padding:1.6rem 0 2rem}
   </div>
   <div class="step-grid">
    <div class="step rv"><i>1</i><div class="ic">🔍</div><h3>Pilih Kereta</h3><p>Tapis ikut kategori dan semak kadar 24 jam setiap model.</p></div>
-   <div class="step rv"><i>2</i><div class="ic">📅</div><h3>Isi Tarikh</h3><p>Masukkan tarikh ambil &amp; pulang — anggaran harga dikira terus.</p></div>
+   <div class="step rv"><i>2</i><div class="ic">📅</div><h3>Isi Butiran</h3><p>Masukkan destinasi, tarikh, waktu &amp; lokasi ambil/hantar — anggaran harga dikira terus.</p></div>
    <div class="step rv"><i>3</i><div class="ic">💬</div><h3>Hantar di WhatsApp</h3><p>Permintaan dihantar ke WhatsApp. Kami semak ketersediaan &amp; sahkan.</p></div>
   </div>
   <p class="bubble-note rv">Contoh mesej yang akan dihantar bila anda tekan “Tempah”:</p>
@@ -400,10 +403,19 @@ footer{border-top:1px solid rgba(255,255,255,.08);padding:1.6rem 0 2rem}
    <div class="wb-body">
     <div class="wb-msg" id="previewMsg">Salam Bambam Car Rental, saya ingin membuat tempahan.
 
-Nama: Aina
-Kereta: Myvi New Model 1.5
-Tarikh: 12/12/2026 – 14/12/2026 (2 hari)
-Anggaran: RM340<span class="wb-time">baru sahaja ✓✓</span></div>
+<b>Nama</b> : Aina
+<b>Jenis kereta</b> : Myvi New Model 1.5
+<b>Destinasi perjalanan</b> : Kuala Lumpur
+
+<b>Tarikh ambil</b> : 12/12/2026
+<b>Waktu ambil</b> : 9:00 pagi
+<b>Lokasi ambil</b> : Kota Bharu
+
+<b>Tarikh hantar</b> : 14/12/2026
+<b>Waktu hantar</b> : 9:00 pagi
+<b>Lokasi hantar</b> : Kota Bharu
+
+<b>Anggaran</b> : RM340 (2 hari × RM170)<span class="wb-time">baru sahaja ✓✓</span></div>
    </div>
   </div>
  </div>
@@ -425,7 +437,7 @@ Anggaran: RM340<span class="wb-time">baru sahaja ✓✓</span></div>
    </details>
    <details>
     <summary>Bagaimana cara membuat tempahan?</summary>
-    <p>Pilih model, isi nama dan tarikh dalam borang tempahan, kemudian tekan “Hantar”. Mesej akan dibuka dalam WhatsApp untuk dihantar kepada kami.</p>
+    <p>Pilih model, kemudian isi destinasi serta tarikh, waktu dan lokasi ambil/hantar dalam borang tempahan, kemudian tekan “Hantar”. Mesej akan dibuka dalam WhatsApp untuk dihantar kepada kami.</p>
    </details>
    <details>
     <summary>Adakah harga yang dipaparkan muktamad?</summary>
@@ -470,14 +482,30 @@ Anggaran: RM340<span class="wb-time">baru sahaja ✓✓</span></div>
   <form id="bookingForm">
    <label class="field" for="customerName">Nama</label>
    <input id="customerName" required placeholder="Nama anda" autocomplete="name">
-   <label class="field" for="carSelect">Model pilihan</label>
+   <label class="field" for="carSelect">Jenis kereta</label>
    <select id="carSelect" required></select>
-   <div class="two">
-    <div><label class="field" for="pickupDate">Tarikh ambil</label><input id="pickupDate" type="date" required></div>
-    <div><label class="field" for="returnDate">Tarikh pulang</label><input id="returnDate" type="date" required></div>
+   <label class="field" for="destination">Destinasi perjalanan</label>
+   <input id="destination" required placeholder="Contoh: Kuala Lumpur, Cameron Highlands">
+   <div class="fgroup">
+    <div class="fgroup-title">Ambil kereta</div>
+    <div class="two">
+     <div><label class="field" for="pickupDate">Tarikh ambil</label><input id="pickupDate" type="date" required></div>
+     <div><label class="field" for="pickupTime">Waktu ambil</label><input id="pickupTime" type="time" required></div>
+    </div>
+    <label class="field" for="pickupLoc">Lokasi ambil</label>
+    <input id="pickupLoc" required placeholder="Alamat / tempat ambil kereta">
+   </div>
+   <div class="fgroup">
+    <div class="fgroup-title">Hantar kereta</div>
+    <div class="two">
+     <div><label class="field" for="returnDate">Tarikh hantar</label><input id="returnDate" type="date" required></div>
+     <div><label class="field" for="returnTime">Waktu hantar</label><input id="returnTime" type="time" required></div>
+    </div>
+    <label class="field" for="returnLoc">Lokasi hantar</label>
+    <input id="returnLoc" required placeholder="Alamat / tempat hantar kereta">
    </div>
    <label class="field" for="customerNote">Catatan (pilihan)</label>
-   <input id="customerNote" placeholder="Lokasi ambil / pertanyaan">
+   <input id="customerNote" placeholder="Pertanyaan lain">
    <div class="estimate"><span id="estBreak">Pilih model &amp; tarikh</span><b id="estTotal">—</b></div>
    <button class="btn btn-lime" type="submit">Hantar via WhatsApp ↗</button>
    <p class="form-hint">Permintaan tempahan akan dibuka dalam WhatsApp. Anggaran tertakluk kepada pengesahan.</p>
@@ -591,19 +619,24 @@ const iso=d=>new Date(d.getTime()-d.getTimezoneOffset()*6e4).toISOString().slice
 const addDays=(d,n)=>{const x=new Date(d);x.setDate(x.getDate()+n);return x};
 const fmt=s=>s.split('-').reverse().join('/');
 $('pickupDate').min=iso(new Date());
+// Kadar 24 jam: setiap 24 jam (atau sebahagian) dikira satu hari
 function rentalDays(){
   const a=$('pickupDate').value,b=$('returnDate').value;
   if(!a||!b)return 0;
-  return Math.max(1,Math.round((new Date(b)-new Date(a))/864e5));
+  const start=new Date(`${a}T${$('pickupTime').value||'09:00'}`),end=new Date(`${b}T${$('returnTime').value||$('pickupTime').value||'09:00'}`);
+  return end>start?Math.ceil((end-start)/864e5):-1;
 }
+const fmtTime=t=>{if(!t)return'';let[h,m]=t.split(':').map(Number);const p=h<12?'pagi':h<19?'petang':'malam';return `${h%12||12}:${String(m).padStart(2,'0')} ${p}`};
 function updateEstimate(){
-  if($('pickupDate').value){$('returnDate').min=iso(addDays(new Date($('pickupDate').value),1));if($('returnDate').value&&$('returnDate').value<$('returnDate').min)$('returnDate').value=$('returnDate').min}
+  if($('pickupDate').value){$('returnDate').min=$('pickupDate').value;if($('returnDate').value&&$('returnDate').value<$('returnDate').min)$('returnDate').value=$('returnDate').min}
   const c=byName($('carSelect').value),d=rentalDays();
+  $('returnTime').setCustomValidity(d<0?'Waktu hantar mesti selepas waktu ambil':'');
+  if(d<0){$('estBreak').textContent='Waktu hantar mesti selepas waktu ambil';$('estTotal').textContent='—';return}
   if(!c||!d){$('estBreak').textContent='Pilih model & tarikh';$('estTotal').textContent='—';return}
   $('estBreak').textContent=`${rm(c.price)} × ${d} hari`;
   $('estTotal').textContent=rm(c.price*d);
 }
-['carSelect','pickupDate','returnDate'].forEach(id=>$(id).addEventListener('change',updateEstimate));
+['carSelect','pickupDate','pickupTime','returnDate','returnTime'].forEach(id=>$(id).addEventListener('change',updateEstimate));
 
 let lastFocus=null;
 function openModal(el){lastFocus=document.activeElement;el.classList.add('open');document.body.style.overflow='hidden';el.querySelector('.close').focus()}
@@ -620,8 +653,19 @@ document.querySelectorAll('.modal,.lightbox').forEach(m=>m.addEventListener('cli
 
 $('bookingForm').addEventListener('submit',e=>{
   e.preventDefault();
-  const c=byName($('carSelect').value),d=rentalDays(),note=$('customerNote').value.trim();
-  const msg=`Salam Bambam Car Rental, saya ingin membuat tempahan.\n\nNama: ${$('customerName').value.trim()}\nKereta: ${c.name}\nTarikh: ${fmt($('pickupDate').value)} – ${fmt($('returnDate').value)} (${d} hari)\nAnggaran: ${rm(c.price*d)}${note?'\nCatatan: '+note:''}`;
+  const c=byName($('carSelect').value),d=rentalDays(),v=id=>$(id).value.trim(),note=v('customerNote');
+  const msg=['Salam Bambam Car Rental, saya ingin membuat tempahan.','',
+    `*Nama* : ${v('customerName')}`,
+    `*Jenis kereta* : ${c.name}`,
+    `*Destinasi perjalanan* : ${v('destination')}`,'',
+    `*Tarikh ambil* : ${fmt(v('pickupDate'))}`,
+    `*Waktu ambil* : ${fmtTime(v('pickupTime'))}`,
+    `*Lokasi ambil* : ${v('pickupLoc')}`,'',
+    `*Tarikh hantar* : ${fmt(v('returnDate'))}`,
+    `*Waktu hantar* : ${fmtTime(v('returnTime'))}`,
+    `*Lokasi hantar* : ${v('returnLoc')}`,'',
+    `*Anggaran* : ${rm(c.price*d)} (${d} hari × ${rm(c.price)})`,
+    ...(note?[`*Catatan* : ${note}`]:[])].join('\n');
   window.open(waUrl(msg),'_blank','noopener');
   closeModal($('bookingModal'));
   toast('Membuka WhatsApp…');
